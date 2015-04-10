@@ -1,0 +1,37 @@
+﻿
+<div class="container-fluid">
+    <!-- list of messages -->
+  
+    <!--ko ifnot: announcement()-->
+    <ul id="inboxList" class="ui-listview" style="list-style" data-bind="foreach: announcements">
+        <li>
+            <a href="#" data-bind="click: $parent.openmsg">
+                <span data-bind="text: Title"></span>
+                <span class="pull-right" data-bind="text: CreateDate().getFullYear()+ '/' + CreateDate().getMonth() + '/' + CreateDate().getDate()"></span>
+            </a>
+        </li>
+    </ul>
+    <br/>
+    <!--button id="new" name="singlebutton" class="btn btn-primary" data-bind="click:newmsg">创建消息</!--button>-->
+
+    <!--/ko-->
+    <!--ko if: announcement()-->
+    <div class="main">        
+
+        <b>主题:</b>
+        <span data-bind="text:announcement().Title"></span>
+        <br />
+        <br />
+        <b>日期:</b>
+        <span data-bind="text:msgDate"></span>
+        <br />
+        <br />
+        <b>内容：</b>
+        <span data-bind="html:announcement().Content"></span>
+        <br />
+        <br />
+        <button id="" name="singlebutton" class="btn btn-primary glyphicon glyphicon-arrow-left" data-bind="click:backtolist">&nbsp;返回</button>
+    </div>
+    <!--/ko-->
+
+</div>

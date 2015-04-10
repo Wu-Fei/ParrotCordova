@@ -1,0 +1,43 @@
+﻿
+<div>
+        <!-- list of Q&A -->
+    <!--ko ifnot: question()-->
+    <div class="container-fluid">
+        <div class="input__text" id="searchcretiria">
+            <div class="flexi">
+                <div class="flexi__col">
+                    <input class="form-control" id="search" name="search" data-bind="value:search,valueUpdate: 'keyup'" placeholder="搜索关键字" type="search">
+                    <a class="js-inputclear" href="#" aria-controls="search" data-bind="click:clearsearch">
+                        <span id="searchclear" class="glyphicon glyphicon-remove"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main" style="height:400px; overflow:auto">
+            <!--ko if: displayquestions().length > 0-->
+            <ul data-bind="foreach: displayquestions">
+                <li>
+                    <a href="#" data-bind="text:QuestionDetail, click: $parent.openanswer"></a>
+                </li>
+            </ul>
+            <!--/ko-->
+
+            <!--if: displayquestions().length == 0 => submit questionn move to the up-right shortcut item>
+            <button id="submit" name="singlebutton" class="btn btn-primary" data-bind="click: submitquestion">Submit a new question</button>
+            <!--/-->
+        </div>
+    </div>
+    <!--/ko-->
+    <!--ko if: question()-->
+    <div class="container-fluid">
+
+                <h3  data-bind="text:question().QuestionDetail" style="text-align:center"></h3>
+            
+        
+    </div>
+    <div class="container-fluid">
+        <span data-bind="html:question().Answer"></span>
+        <button id="" name="singlebutton" class="btn btn-primary" data-bind="click:backtolist">返回</button>
+    </div>
+    <!--/ko-->
+</div>

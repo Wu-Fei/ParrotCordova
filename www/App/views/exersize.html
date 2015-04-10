@@ -1,0 +1,28 @@
+﻿<div class="container-fluid">
+    <div>
+        <!--ko ifnot: exersize()-->
+        <ul data-bind="foreach: exersizes">
+            <li>
+                <a href="#" data-bind="text:Name, click: $parent.openexersize"></a>
+            </li>
+        </ul>
+        <!--/ko-->
+        <!--ko if: exersize() -->
+        <h4 style="text-align:center" data-bind="text:exersize().Name"></h4>
+        
+        <div>
+            <ul data-bind="foreach: exersize().Sections">
+                <li>
+                    <span data-bind="text:Name"></span>
+                    <ul data-bind="foreach: Problems">
+                        <li>
+                            <a href="#" data-bind="text:GeneralInfo, attr: {href: '#problem/' + Id()}"></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <button id="" name="singlebutton" class="btn btn-primary" data-bind="click:backtolist">返回</button>
+        <!--/ko-->
+    </div>
+</div>
